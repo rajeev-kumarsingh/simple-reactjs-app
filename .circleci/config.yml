@@ -24,7 +24,7 @@ jobs:
       - image: circleci/node:20
     steps:
       - checkout
-      - attach-workspace:
+      - attach_workspace:
           at: .
       - run:
           name: Install AWS CLI
