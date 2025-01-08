@@ -1,3 +1,4 @@
+---
 version: 2.1
 jobs:
   build:
@@ -18,26 +19,28 @@ jobs:
           root: .
           paths:
             - build
-   s3-push:
-     docker:
-       - image: circleci/node:20
-     steps:
-       - attach-workspace:
-           at: .
-       - run:
-         name: Install AWS CLI
+  s3-push:
+    docker:
+      - image: circleci/node:20
+    steps:
+      - checkout
+      - attach-workspace:
+          at: .
+      - run:
+          name: Install AWS CLI
           command: |
             sudo apt-get update && \
             sudo apt-get install -y awscli
-       - run:
-           name:
-           command: |
-             aws s3 sync build s3://circle-ci-radical/rajeev-circleci/
+      - run:
+          name: null
+          command: |
+            aws s3 sync build s3://circle-ci-radical/rajeev-circleci/
 workflow:
   buildandpushs3:
     jobs:
       - build
-      - s3-push
-        requires:
-          - build
-        context: AWS-CIRCLECI
+      - s3-push:
+          requires:
+            - build
+          context: AWS-CIRCLECI
+
