@@ -21,7 +21,7 @@ jobs:
             - build
   s3-push:
     docker:
-      - image: circleci/node:14
+      - image: cimg/python3.8.16
     steps:
       - checkout
       - attach_workspace:
@@ -30,7 +30,7 @@ jobs:
           name: Install AWS CLI
           command: |
             sudo apt-get update && \
-            sudo apt-get install -y awscli
+            sudo pip install -y awscli
       - run:
           name: null
           command: |
