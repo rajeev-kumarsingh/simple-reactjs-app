@@ -35,7 +35,7 @@ jobs:
           name: null
           command: |
             aws s3 sync build s3://cicd-bucket-rajeev
-workflow:
+workflows:
   buildandpushs3:
     jobs:
       - build
