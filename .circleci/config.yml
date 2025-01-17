@@ -82,6 +82,3 @@ workflows:
           requires:
             - require-approval
           context: AWS-CIRCLECI
-    filters:
-      branches:
-        only: master
