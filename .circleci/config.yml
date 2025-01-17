@@ -70,9 +70,6 @@ workflows:
   buildandpushs3:
     jobs:
       - build:
-          filters:
-            branches:
-              only: master
       - s3-push:
           requires:
             - build
@@ -85,3 +82,6 @@ workflows:
           requires:
             - require-approval
           context: AWS-CIRCLECI
+    filters:
+      branches:
+        only: master
