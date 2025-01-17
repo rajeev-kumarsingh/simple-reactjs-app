@@ -44,6 +44,19 @@ jobs:
           name: Install AWSCLI
           command: pip install awscli
       - run:
+          name: Check for Active Deployment
+          command: |
+            ACTIVE_DEPLOYMENT=$(aws deploy list-deployments \
+            --application-name aws-rajeev-circleci-codedeploy \
+            --deployment-group-name code-deploy-service-rajeev \
+            --include-only-statuses Created Queued InProgress \
+            --region us-east-1 --output text --query "deployments[0]")
+
+            if [ "$ACTIVE_DEPLOYMENT" != "None" ]; then
+            echo "Active deployment found: $ACTIVE_DEPLOYMENT. Stopping it."
+            aws deploy stop-deployment --deployment-id $ACTIVE_DEPLOYMENT --region us-east-1
+            fi
+      - run:
           name: Trigger Codedeploy app 
           command: |
             aws deploy create-deployment \
