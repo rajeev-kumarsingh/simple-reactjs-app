@@ -69,7 +69,10 @@ jobs:
 workflows:
   buildandpushs3:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only: master
       - s3-push:
           requires:
             - build
