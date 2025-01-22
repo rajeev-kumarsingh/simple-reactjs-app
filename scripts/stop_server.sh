@@ -10,7 +10,7 @@ PORT=5000
 # find process id 
 PID=$(lsof -t -i:$PORT || true)
 #
-if [ -n "$PID" ]; then;
+if [ -n "$PID" ]; then
 echo "Killing Process"
 kill -9 $PID
 fi
