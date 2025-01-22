@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #set errors if any command is not execute successfully
-set e 
+set -e 
 echo "Appliction stop is underway...."
 #application dir 
 APP_DIR = "/home/ubuntu/react-app"

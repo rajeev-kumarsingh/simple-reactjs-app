@@ -1,5 +1,5 @@
 # Before Install
 #!/bin/bash
-set i 
+set -e 
 APP_DIR = "/home/ubuntu/react-app"
 rm -rf $APP_DIR

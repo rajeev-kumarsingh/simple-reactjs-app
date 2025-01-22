@@ -1,6 +1,6 @@
 #Application Start
 #!/bin/bash
-set i 
+set -e 
 echo "Starting Application"
 APP_DIR = "/home/ubuntu/react-app"
 PORT = 5000
