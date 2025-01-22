@@ -16,7 +16,7 @@ jobs:
         command: npm run build
     - run:
         name: Create a ZIP file
-        command: zip -r build.zip build appspec.yaml scripts
+        command: zip -r build.zip build appspec.yml scripts
     - persist_to_workspace:
         root: .
         paths:
