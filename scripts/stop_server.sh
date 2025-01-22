@@ -8,7 +8,7 @@ APP_DIR="/home/ubuntu/react-app"
 # Port on which our app is running
 PORT=5000
 # find process id 
-PID = $(lsof -t -i:$PORT || true)
+PID=$(lsof -t -i:$PORT || true)
 #
 if [ -n "$PID" ]; then;
 echo "Killing Process"
