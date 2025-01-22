@@ -4,9 +4,9 @@
 set -e 
 echo "Appliction stop is underway...."
 #application dir 
-APP_DIR = "/home/ubuntu/react-app"
+APP_DIR="/home/ubuntu/react-app"
 # Port on which our app is running
-PORT = 5000
+PORT=5000
 # find process id 
 PID = $(lsof -t -i:$PORT || true)
 #
